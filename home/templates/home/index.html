@@ -1,7 +1,39 @@
 {% extends 'base.html' %}
 {% block 'title' %} Homepage {% endblock %}
-<<<<<<< HEAD
-{% block 'content' %} Conteudo da página inicial {% endblock 'content' %}
-=======
-{% block 'body' %} Conteudo da página inicial {% endblock %}
->>>>>>> be65122f89f58f6a0a45d6d2dc7e492b5bf6d3dc
+{% block 'content' %} 
+
+<head>
+    <style>
+        form{
+            height: 100px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<form class="form-inline">
+    <div class="form-group">
+      <label for="tarefa">Tarefa</label>
+      <input type="text" class="form-control" id="tarefa" placeholder="Informe uma tarefa">
+    </div>
+    <button type="submit" class="btn btn-primary" id="btn">Cadastrar tarefa</button>
+  </form>
+
+  <ul>
+
+  </ul>
+
+  <script>
+    let tarefas = []
+    btn = document.getElementById("btn").addEventListener("click", (e)=> {
+        tarefa = document.getElementById("tarefa").value
+        tarefas.push(tarefa)
+        console.log(tarefas)
+        e.preventDefault()
+    })
+
+</script>
+{% endblock 'content' %}
+
+
