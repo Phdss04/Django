@@ -1,3 +1,41 @@
 {% extends 'base.html' %}
-{% block 'title' %} Tasks Page {% endblock %}
-{% block 'content' %}Conteudo da página Tasks{% endblock 'content' %}
+{% block 'title' %} Homepage {% endblock %}
+{% block 'content' %} 
+
+<br>
+    <div class="container">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Tarefa</th>
+                <th>Descrição</th>
+                <th style="text-align:center">Situação da tarefa</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            {%for task in tasks%}
+              <tr>
+                <th>{{task.id}}</th>
+                <td>{{task.nome}}</td>
+                <td>{{task.descricao}}</td>
+                <td style="display: flex; justify-content:center;">
+                    {%if task.feito%}
+                        <h6 style="color:green;">Completa</h6>
+                    {%else%}
+                        <h6 style="color:red;">Incompleta</h6>
+                    {%endif%}
+                </td>
+
+                <td> <a href="{%url "drop_task" task.id%}">Excluir</td>
+
+                <td><a href="{%url "edit_task" task.id%}">Editar</td>   
+              </tr>
+              
+            {%endfor%}
+            </tbody>
+          </table>
+    </div> 
+{% endblock 'content' %}
